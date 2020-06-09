@@ -1,0 +1,18 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "eslint.alwaysShowStatus": true,
+    "eslint.options": {
+        "extensions": [".js", ".jsx", ".css", ".scss", ".html"]
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+    ],
+    "jest.autoEnable": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true
+    }
+}
