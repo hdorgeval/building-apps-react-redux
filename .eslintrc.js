@@ -12,6 +12,10 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
+  globals: {
+    document: true,
+    window: true,
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
