@@ -6,41 +6,41 @@ process.env.NODE_ENV = 'development';
 module.exports = {
   mode: 'development',
   target: 'web',
-  devTool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   entry: ['./src/index.js'],
   output: {
     path: path.join(__dirname, 'build'),
     publicPath: '/',
     filename: 'bundle.js',
-    devServer: {
-      stats: 'minimal',
-      overlay: true,
-      historyApiFallback: true,
-      disableHostCheck: true,
-      headers: {
-        'Acces-Control-Allow-Origin': '*',
+  },
+  devServer: {
+    stats: 'minimal',
+    overlay: true,
+    historyApiFallback: true,
+    disableHostCheck: true,
+    headers: {
+      'Acces-Control-Allow-Origin': '*',
+    },
+    https: false,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      favicon: 'src/favicon.ico',
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
       },
-      https: false,
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        favicon: 'src/favicon.ico',
-      }),
+      {
+        test: /(\.css)$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
-    module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader'],
-        },
-        {
-          test: /(\.css)$/,
-          exclude: /node_modules/,
-          use: ['style-loader', 'css-loader'],
-        },
-      ],
-    },
   },
 };
