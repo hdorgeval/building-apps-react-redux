@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2020: true,
+    jest: true,
     node: true,
   },
   extends: [
@@ -16,6 +17,7 @@ module.exports = {
     document: true,
     window: true,
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -25,7 +27,9 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['prettier', 'react', 'import'],
+  root: true,
   rules: {
+    'no-debugger': 'warn',
     'no-multiple-empty-lines': [
       'error',
       {
@@ -36,5 +40,8 @@ module.exports = {
   },
   settings: {
     'import/extensions': ['.js', '.ts', '.tsx', '.css', '.scss'],
+    react: {
+      version: 'detect',
+    },
   },
 };
