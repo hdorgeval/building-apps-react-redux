@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 process.env.NODE_ENV = 'development';
 
@@ -11,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash:8].js',
   },
   devServer: {
     stats: 'minimal',
@@ -23,24 +24,30 @@ module.exports = {
     },
     https: false,
   },
+  module: {
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'eslint-loader',
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       favicon: 'src/favicon.ico',
     }),
+    new MiniCssExtractPlugin({ filename: '[name]-[contenthash:8].css' }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
-      },
-      {
-        test: /(\.css)$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
-  },
 };
