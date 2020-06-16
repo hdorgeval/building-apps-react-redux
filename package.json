@@ -1,5 +1,5 @@
 {
-  "name": "react-redux",
+  "name": "learn-react-redux",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -38,6 +38,8 @@
     "bootstrap": "4.5.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-router-dom": "5.2.0"
+    "react-redux": "7.2.0",
+    "react-router-dom": "5.2.0",
+    "redux": "4.0.5"
   }
 }
