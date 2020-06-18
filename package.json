@@ -8,9 +8,9 @@
     "eslint-init": "eslint --init",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,html,json,md}\" ",
     "lint": "eslint ./ --ext .js,.jsx --format visualstudio --no-color --max-warnings 10 --report-unused-disable-directives --ignore-pattern 'public/*' --ignore-pattern 'coverage/*' --ignore-pattern 'node_modules/*' ",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
-    "start-mock-api": "node mock-api/createDb.js && node mock-api/apiServer.js"
+    "mock-api": "node mock-api/createDb.js && node mock-api/apiServer.js",
+    "start": "concurrently \"webpack-dev-server --config webpack.config.dev.js --port 3000\"    \"npm run mock-api\"  ",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Henri d'Orgeval",
   "license": "ISC",
