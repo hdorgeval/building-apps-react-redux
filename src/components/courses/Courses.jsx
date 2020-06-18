@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { createCourse } from '../../redux/actions';
+import { connectStateAndProps } from './Courses.connect';
 
 export const Component = (props) => {
   const [title, setTitle] = useState('');
@@ -35,18 +34,4 @@ Component.propTypes = {
   courses: PropTypes.array.isRequired,
   createCourse: PropTypes.func.isRequired,
 };
-
-function mapStateToProps(state) {
-  return {
-    courses: state.courses,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    createCourse: (course) => dispatch(createCourse(course)),
-  };
-}
-
-const connectedStateAndProps = connect(mapStateToProps, mapDispatchToProps);
-export const Courses = connectedStateAndProps(Component);
+export const Courses = connectStateAndProps(Component);
