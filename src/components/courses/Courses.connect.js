@@ -7,10 +7,14 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    createCourse: (course) => dispatch(createCourse(course)),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     createCourse: (course) => dispatch(createCourse(course)),
+//   };
+// }
+
+const mapDispatchToProps = {
+  createCourse,
+};
 
 export const connectStateAndProps = connect(mapStateToProps, mapDispatchToProps);

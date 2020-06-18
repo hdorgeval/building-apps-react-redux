@@ -1,5 +1,5 @@
 /**
- * Action creator
+ * Action creator for creating a course
  *
  * @export
  * @param {{title:string}} course
