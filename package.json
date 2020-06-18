@@ -9,7 +9,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css,html,json,md}\" ",
     "lint": "eslint ./ --ext .js,.jsx --format visualstudio --no-color --max-warnings 10 --report-unused-disable-directives --ignore-pattern 'public/*' --ignore-pattern 'coverage/*' --ignore-pattern 'node_modules/*' ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000"
+    "start": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+    "start-mock-api": "node mock-api/createDb.js && node mock-api/apiServer.js"
   },
   "author": "Henri d'Orgeval",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.20.0",
     "html-webpack-plugin": "4.3.0",
+    "json-server": "0.16.1",
     "mini-css-extract-plugin": "0.9.0",
     "prettier": "2.0.5",
     "react-testing-library": "8.0.1",
