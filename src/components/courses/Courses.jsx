@@ -11,7 +11,7 @@ export const Component = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.dispatch(createCourse({ title }));
+    props.createCourse({ title });
   };
 
   return (
@@ -33,6 +33,7 @@ Component.displayName = 'Courses';
 Component.propTypes = {
   dispatch: PropTypes.func.isRequired,
   courses: PropTypes.array.isRequired,
+  createCourse: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -41,5 +42,11 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedStateAndProps = connect(mapStateToProps);
+function mapDispatchToProps(dispatch) {
+  return {
+    createCourse: (course) => dispatch(createCourse(course)),
+  };
+}
+
+const connectedStateAndProps = connect(mapStateToProps, mapDispatchToProps);
 export const Courses = connectedStateAndProps(Component);
