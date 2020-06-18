@@ -1,3 +1,4 @@
+import { CREATE_COURSE } from '../actions/actionTypes';
 import { initialState } from '../state';
 
 /**
@@ -9,7 +10,7 @@ import { initialState } from '../state';
  */
 export function coursesReducer(state = initialState.courses, action) {
   switch (action.type) {
-    case 'CREATE_COURSE':
+    case CREATE_COURSE:
       return [...state, { ...action.course }];
 
     default:
