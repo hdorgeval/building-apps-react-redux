@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createCourse } from '../../redux/actions';
+import { createCourse, loadCourses } from '../../redux/actions';
 
 function mapStateToProps(state) {
   return {
@@ -15,6 +15,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   createCourse,
+  loadCourses,
 };
 
 export const connectStateAndProps = connect(mapStateToProps, mapDispatchToProps);
