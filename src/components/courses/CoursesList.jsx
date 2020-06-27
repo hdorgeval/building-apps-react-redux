@@ -5,7 +5,11 @@ import { connectStateAndProps } from './CoursesList.connect';
 
 export const Component = (props) => {
   useEffect(() => {
-    console.log('launch useEffect');
+    console.log('CoursesList useEffect');
+    props
+      .loadAuthors()
+      .then(() => console.log('authors loaded'))
+      .catch((error) => console.log('error when loading authors: ', error));
     props
       .loadCourses()
       .then(() => console.log('courses loaded'))
@@ -34,7 +38,7 @@ export const Component = (props) => {
               <td>
                 <Link to={`/course/${course.slug}`}>{course.title}</Link>
               </td>
-              <td>{course.authorId}</td>
+              <td>{course.authorName}</td>
               <td>{course.category}</td>
             </tr>
           );
@@ -47,6 +51,7 @@ export const Component = (props) => {
 Component.displayName = 'CoursesList';
 Component.propTypes = {
   courses: PropTypes.array.isRequired,
+  loadAuthors: PropTypes.func.isRequired,
   loadCourses: PropTypes.func.isRequired,
 };
 

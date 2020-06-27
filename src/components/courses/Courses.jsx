@@ -1,5 +1,4 @@
 import React from 'react';
-import { connectStateAndProps } from './Courses.connect';
 import { CoursesList } from './CoursesList.jsx';
 
 export const Component = () => {
@@ -12,4 +11,4 @@ export const Component = () => {
 };
 
 Component.displayName = 'Courses';
-export const Courses = connectStateAndProps(Component);
+export const Courses = Component;
