@@ -1,13 +1,14 @@
 import * as authorApi from '../../api/authorApi';
 import '../../typedef';
 import { LOAD_AUTHORS_SUCCESS } from './actionTypes';
+import './authorActions.typedef';
 
 /**
  * Action creator
  *
  * @export
  * @param {Author[]} authors
- * @returns
+ * @returns {LoadAuthorsSuccessAction}
  */
 export function loadAuthorsSuccess(authors) {
   return {
