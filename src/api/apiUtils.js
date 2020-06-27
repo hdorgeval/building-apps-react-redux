@@ -1,3 +1,12 @@
+import '../typedef';
+
+/**
+ * return the JSON response
+ *
+ * @export
+ * @param {Object} response
+ * @returns {Author[] | Course[]}
+ */
 export async function handleResponse(response) {
   if (response.ok) return response.json();
   if (response.status === 400) {
@@ -8,7 +17,6 @@ export async function handleResponse(response) {
   }
   throw new Error('Network response was not ok.');
 }
-
 // In a real app, would likely call an error logging service.
 export function handleError(error) {
   // eslint-disable-next-line no-console
