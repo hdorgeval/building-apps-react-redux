@@ -6,7 +6,7 @@ import '../../typedef';
  * Map state to props
  *
  * @param {State} state
- * @returns {{courses: Course[]}}
+ * @returns {{courses: ViewCourse[]}}
  */
 function mapStateToProps(state) {
   const mappedCourses = state.courses.map((course) => {

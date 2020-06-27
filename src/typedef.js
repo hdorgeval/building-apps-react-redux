@@ -10,7 +10,6 @@
  *  title: string,
  *  slug: string,
  *  authorId: number,
- *  authorName: string | undefined
  * }} Course
  * @property {string} slug - course url.
  */
@@ -18,4 +17,15 @@
 /**
  * State
  * @typedef {{authors: Author[], courses: Course[]}} State
+ */
+
+/**
+ * ViewCourse
+ * @typedef {{
+ *  id: string,
+ *  title: string,
+ *  slug: string,
+ *  authorName: string | undefined
+ * }} ViewCourse
+ * @property {string} slug - course url.
  */
