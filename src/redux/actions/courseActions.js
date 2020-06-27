@@ -23,7 +23,12 @@ export function loadCoursesSuccess(courses) {
 }
 
 export function loadCourses() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { courses } = getState();
+    if (courses && courses.length > 0) {
+      return Promise.resolve();
+    }
+
     return courseApi
       .getCourses()
       .then((courses) => {

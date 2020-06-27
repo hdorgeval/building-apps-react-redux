@@ -24,7 +24,12 @@ export function loadAuthorsSuccess(authors) {
  * @returns {void}
  */
 export function loadAuthors() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { courses: authors } = getState();
+    if (authors && authors.length > 0) {
+      return Promise.resolve();
+    }
+
     return authorApi
       .getAuthors()
       .then((authors) => {
