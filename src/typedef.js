@@ -29,3 +29,12 @@
  * }} ViewCourse
  * @property {string} slug - course url.
  */
+
+/**
+ * ViewManageCourse
+ * @typedef {{
+ *  authors: Author[]
+ *  courses: ViewCourse[],
+ *  selectedCourse: Course
+ * }} ViewManageCourse
+ */

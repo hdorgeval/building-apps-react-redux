@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import { loadAuthors, loadCourses } from '../../redux/actions';
+import { newCourse } from '../../redux/actions/course.model';
 import '../../typedef';
 
 /**
  * Map state to props
  *
  * @param {State} state
- * @returns {{courses: ViewCourse[]}}
+ * @returns {{courses: ViewManageCourse}}
  */
 function mapStateToProps(state) {
   const mappedCourses = state.courses.map((course) => {
@@ -17,7 +18,9 @@ function mapStateToProps(state) {
       authorName,
     };
   });
+
   return {
+    selectedCourse: newCourse,
     courses: mappedCourses,
     authors: state.authors,
   };

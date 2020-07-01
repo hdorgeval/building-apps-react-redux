@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
-import { connectStateAndProps } from './ManageCourse.connect';
+import React, { useEffect, useState } from 'react';
+import { CourseForm } from './CourseForm.jsx';
+import { connectStateAndProps } from './ManageCourse.connect.js';
 
 const Component = (props) => {
+  const [course] = useState({ ...props.selectedCourse });
+  const [errors] = useState({});
+
   useEffect(() => {
     const { loadAuthors, loadCourses } = props;
     console.log('CoursesList useEffect');
@@ -18,7 +22,7 @@ const Component = (props) => {
 
   return (
     <>
-      <h2>Manage Course</h2>
+      <CourseForm course={course} errors={errors} authors={props.authors} />
     </>
   );
 };
@@ -29,6 +33,7 @@ Component.propTypes = {
   courses: PropTypes.array.isRequired,
   loadAuthors: PropTypes.func.isRequired,
   loadCourses: PropTypes.func.isRequired,
+  selectedCourse: PropTypes.object.isRequired,
 };
 
 export const ManageCourse = connectStateAndProps(Component);
