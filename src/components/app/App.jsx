@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createReduxStore, initialState } from '../../redux';
 import { About } from '../about';
 import { Header } from '../common';
-import { Courses } from '../courses';
+import { Courses, ManageCourse } from '../courses';
 import { Home } from '../home';
 import { PageNotFound } from './';
 
@@ -26,6 +26,12 @@ export const App = () => {
             </Route>
             <Route path="/courses">
               <Courses />
+            </Route>
+            <Route path="/course/:slug">
+              <ManageCourse />
+            </Route>
+            <Route path="/course">
+              <ManageCourse />
             </Route>
             <Route path="*">
               <PageNotFound />
