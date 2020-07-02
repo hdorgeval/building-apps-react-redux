@@ -4,7 +4,7 @@ import { CourseForm } from './CourseForm.jsx';
 import { connectStateAndProps } from './ManageCourse.connect.js';
 
 const Component = (props) => {
-  const [course] = useState({ ...props.selectedCourse });
+  const [course, setCourse] = useState({ ...props.selectedCourse });
   const [errors] = useState({});
 
   useEffect(() => {
@@ -20,9 +20,20 @@ const Component = (props) => {
       .catch((error) => console.log('error when loading courses: ', error));
   }, []);
 
+  function handleChange(event) {
+    const { name, value } = event.target;
+    console.log('handleChange', { name, value });
+    setCourse((previousCourse) => {
+      return {
+        ...previousCourse,
+        [name]: name === 'authorId' ? parseInt(value, 10) : value,
+      };
+    });
+  }
+
   return (
     <>
-      <CourseForm course={course} errors={errors} authors={props.authors} />
+      <CourseForm authors={props.authors} course={course} errors={errors} onChange={handleChange} />
     </>
   );
 };
