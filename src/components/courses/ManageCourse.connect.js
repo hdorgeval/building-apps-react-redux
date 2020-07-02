@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { loadAuthors, loadCourses } from '../../redux/actions';
+import { loadAuthors, loadCourses, saveCourse } from '../../redux/actions';
 import { newCourse } from '../../redux/actions/course.model';
 import '../../typedef';
 
@@ -29,6 +29,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   loadAuthors,
   loadCourses,
+  saveCourse,
 };
 
 export const connectStateAndProps = connect(mapStateToProps, mapDispatchToProps);
