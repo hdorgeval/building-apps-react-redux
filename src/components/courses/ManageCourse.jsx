@@ -31,9 +31,20 @@ const Component = (props) => {
     });
   }
 
+  function handleSave(event) {
+    event.preventDefault();
+    props.saveCourse(course);
+  }
+
   return (
     <>
-      <CourseForm authors={props.authors} course={course} errors={errors} onChange={handleChange} />
+      <CourseForm
+        authors={props.authors}
+        course={course}
+        errors={errors}
+        onChange={handleChange}
+        onSave={handleSave}
+      />
     </>
   );
 };
@@ -44,6 +55,7 @@ Component.propTypes = {
   courses: PropTypes.array.isRequired,
   loadAuthors: PropTypes.func.isRequired,
   loadCourses: PropTypes.func.isRequired,
+  saveCourse: PropTypes.func.isRequired,
   selectedCourse: PropTypes.object.isRequired,
 };
 
