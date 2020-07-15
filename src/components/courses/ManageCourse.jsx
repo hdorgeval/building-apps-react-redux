@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { newCourse } from '../../redux/actions/course.model.js';
 import { CourseForm } from './CourseForm.jsx';
 import { connectStateAndProps } from './ManageCourse.connect.js';
 
 const Component = (props) => {
-  const [course, setCourse] = useState({ ...props.selectedCourse });
+  const params = useParams();
+  const selectedCourse = props.courses.find((c) => c.slug === params.slug) || newCourse;
+
+  const [course, setCourse] = useState(selectedCourse);
   const [errors] = useState({});
   const history = useHistory();
 
@@ -58,7 +62,6 @@ Component.propTypes = {
   loadAuthors: PropTypes.func.isRequired,
   loadCourses: PropTypes.func.isRequired,
   saveCourse: PropTypes.func.isRequired,
-  selectedCourse: PropTypes.object.isRequired,
 };
 
 export const ManageCourse = connectStateAndProps(Component);

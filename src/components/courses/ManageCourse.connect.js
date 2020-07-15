@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { loadAuthors, loadCourses, saveCourse } from '../../redux/actions';
-import { newCourse } from '../../redux/actions/course.model';
 import '../../typedef';
 
 /**
@@ -20,7 +19,6 @@ function mapStateToProps(state) {
   });
 
   return {
-    selectedCourse: newCourse,
     courses: mappedCourses,
     authors: state.authors,
   };
