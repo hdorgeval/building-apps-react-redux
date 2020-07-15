@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { CourseForm } from './CourseForm.jsx';
 import { connectStateAndProps } from './ManageCourse.connect.js';
 
 const Component = (props) => {
   const [course, setCourse] = useState({ ...props.selectedCourse });
   const [errors] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     const { loadAuthors, loadCourses } = props;
@@ -33,7 +35,7 @@ const Component = (props) => {
 
   function handleSave(event) {
     event.preventDefault();
-    props.saveCourse(course);
+    props.saveCourse(course).then(() => history.push('/courses'));
   }
 
   return (
