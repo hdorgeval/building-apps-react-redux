@@ -6,7 +6,10 @@ import { CourseForm } from './CourseForm.jsx';
 import { connectStateAndProps } from './ManageCourse.connect.js';
 
 const Component = (props) => {
+  console.log('Executing component');
   const params = useParams();
+  console.log(`params: ${params.slug}`);
+  console.log(`courses count: ${props.courses.length}`);
   const selectedCourse = props.courses.find((c) => c.slug === params.slug) || newCourse;
 
   const [course, setCourse] = useState(selectedCourse);
@@ -17,6 +20,11 @@ const Component = (props) => {
     const { loadAuthors, loadCourses } = props;
     console.log('CoursesList useEffect');
 
+    if (Array.isArray(props.courses) && props.courses.length > 0) {
+      const selectedCourse = props.courses.find((c) => c.slug === params.slug) || newCourse;
+      setCourse(selectedCourse);
+    }
+
     loadAuthors()
       .then(() => console.log('authors loaded'))
       .catch((error) => console.log('error when loading authors: ', error));
@@ -24,7 +32,7 @@ const Component = (props) => {
     loadCourses()
       .then(() => console.log('courses loaded'))
       .catch((error) => console.log('error when loading courses: ', error));
-  }, []);
+  }, [props.courses.length]);
 
   function handleChange(event) {
     const { name, value } = event.target;
