@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Spinner } from '../common';
 import { CoursesList } from './CoursesList.jsx';
 
 export const Component = () => {
@@ -10,6 +11,7 @@ export const Component = () => {
         Add course
       </Link>
       <CoursesList />
+      <Spinner />
     </>
   );
 };
